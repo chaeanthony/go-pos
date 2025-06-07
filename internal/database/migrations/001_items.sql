@@ -1,0 +1,12 @@
+-- +goose Up
+CREATE TABLE IF NOT EXISTS items (
+  id TEXT PRIMARY KEY,
+  created_at TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+  updated_at TEXT NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+  name TEXT NOT NULL,
+  description TEXT, 
+  cost INTEGER DEFAULT 0
+);
+
+-- +goose Down
+DROP TABLE items;
