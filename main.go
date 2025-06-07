@@ -80,9 +80,9 @@ func main() {
 
 	mux.HandleFunc("GET /api/items", cfg.HandlerItemsGet)
 	mux.HandleFunc("GET /api/items/{itemID}", cfg.HandlerItemGetByID)
-	mux.HandleFunc("POST /api/items", cfg.HandlerItemsCreate)
+	mux.Handle("POST /api/items", cfg.StoreAuthMiddleware(http.HandlerFunc(cfg.HandlerItemsCreate)))
 	mux.Handle("PUT /api/items", cfg.StoreAuthMiddleware(http.HandlerFunc(cfg.HandlerItemsUpdate)))
-	mux.Handle("DELETE /api/items/{itemID}", http.HandlerFunc(cfg.HandlerItemsDelete))
+	mux.Handle("DELETE /api/items/{itemID}", cfg.StoreAuthMiddleware(http.HandlerFunc(cfg.HandlerItemsDelete)))
 
 	mux.HandleFunc("GET /api/orders", cfg.HandlerOrdersGet)
 	mux.HandleFunc("POST /api/orders", cfg.HandlerOrdersCreate)
