@@ -1,6 +1,6 @@
 # Go Point-of-service Backend
 
-Backend for POS. Create your own frontend or use chaeanthony/react-pos-frontend. Using Turso as the database.
+Backend for POS. Create your own frontend or use chaeanthony/pos-frontend. Using Turso as the database.
 
 ### Usage
 
